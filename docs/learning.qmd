@@ -25,6 +25,10 @@ Took the *train* to get to Aarhus today. I lived in Aarhus as a student, and **m
 
 ## Simple code
 
-
 ```{r}
-3 * 3
+3*3
+```
+
+## Testing for Git
+
+Sky is grey 
