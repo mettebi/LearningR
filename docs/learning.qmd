@@ -28,4 +28,3 @@ Took the *train* to get to Aarhus today. I lived in Aarhus as a student, and **m
 
 ```{r}
 3 * 3
-```
