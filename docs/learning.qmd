@@ -1,0 +1,31 @@
+---
+title: "Reproducible document"
+author: "Mette Brouw Iversen"
+format: html
+---
+
+## Basics of R
+
+```{r}
+1 + 1
+```
+
+## setup code chunk
+
+```{r setup}
+library(tidyverse)
+```
+
+## About me
+
+- Name: Mette Brouw Iversen
+- Affiliation: SDCC
+
+Took the *train* to get to Aarhus today. I lived in Aarhus as a student, and **miss** the city.
+
+## Simple code
+
+
+```{r}
+3 * 3
+```
