@@ -4,15 +4,23 @@ author: "Mette BI"
 format: html
 ---
 
+
+
 ## Basics of R
 
 create a new chunk to start coding by using bruge control-shift-p, e.g.:
+
+
 
 ```{r}
 1 + 1
 ```
 
+
+
 ## setup code chunk
+
+
 
 ```{r setup}
 #| message: false
@@ -23,7 +31,11 @@ post_meal_data <- read_csv2(here::here("data/post-meal-insulin.csv"))
 small_post_meal_data <- select(post_meal_data, id, Age, BMI, Group, auc_pg, auc_ins, glykemi)
 ```
 
+
+
 ## Showing the data
+
+
 
 ```{r}
 post_meal_data
@@ -45,9 +57,13 @@ ggplot(post_meal_data, aes(x = BMI)) +
   geom_histogram()
 ```
 
+
+
 @fig-mettes-histo
 
 ## Discrete plots
+
+
 
 ```{r}
 #| fig-cap: "Group"
@@ -56,14 +72,22 @@ ggplot(post_meal_data, aes(x = Group)) +
   geom_bar()
 ```
 
+
+
 See @fig-group-discrete above for a cool plot!
+
+
 
 ```{r}
 post_meal_data |>
   ggplot(aes(x = Group, fill = as.character(glykemi))) +
   geom_bar(position = position_dodge())
 ```
+
+
 ## putting two plots side by side
+
+
 
 ```{r}
 ggplot(post_meal_data, aes(x = BMI)) +
@@ -108,7 +132,11 @@ post_meal_data |>
   geom_bar()
 ```
 
+
+
 ## Plotting two continuous variables
+
+
 
 ```{r}
 #| fig-cap: "Scatterplot of BMI and the AUC for glucose"
@@ -117,6 +145,8 @@ ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
   geom_point() +
   geom_smooth()
 ```
+
+
 
 ## Pushing changes to remote aka github
 
@@ -127,6 +157,8 @@ ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
 look at 9 in the pre-course material https://guides.rostools.org/connect-github.html
 
 ## Selecting columns from dataset
+
+
 
 ```{r}
 select(post_meal_data, Age)
@@ -142,7 +174,11 @@ select(post_meal_data, ends_with("DXA"))
 select(post_meal_data, contains("0"))
 ```
 
+
+
 ## Renaming specific columns
+
+
 
 ```{r}
 small_post_meal_data |>
@@ -152,7 +188,11 @@ small_post_meal_data |>
   rename(auc_glucose = auc_pg, auc_insulin = auc_ins)
 ```
 
+
+
 ## Select and rename tasks
+
+
 
 ```{r}
 # Task 1. = 13 columns
@@ -165,9 +205,13 @@ post_meal_data |>
   rename(P.Glucose.minus5.OGTT = P.Glucose..5.OGTT, Insulin.minus5.OGTT = Insulin..5.OGTT.X)
 ```
 
+
+
 # Task 3.
 basic_info <- select(post_meal_data, id, BMI, Length, Weight, Age)
 rename(basic_info, Height = Length)
+
+
 
 ```{r}
 post_meal_data |>
@@ -175,7 +219,11 @@ post_meal_data |>
   rename(Height = Length)
 ```
 
+
+
 ## filtering data by row
+
+
 
 ```{r}
 small_post_meal_data |>
@@ -205,3 +253,4 @@ tidier_post_meal_data <- small_post_meal_data |>
   filter(glykemi == 0) |>
   select(-glykemi)
 ```
+
