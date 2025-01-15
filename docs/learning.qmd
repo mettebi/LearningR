@@ -151,3 +151,27 @@ small_post_meal_data |>
 small_post_meal_data |>
   rename(auc_glucose = auc_pg, auc_insulin = auc_ins)
 ```
+
+## Select and rename tasks
+
+```{r}
+# Task 1. = 13 columns
+post_meal_data |>
+  select(contains("OGTT"))
+
+# Task 2.
+post_meal_data |>
+  select(contains(".."), -contains("...")) |>
+  rename(P.Glucose.minus5.OGTT = P.Glucose..5.OGTT, Insulin.minus5.OGTT = Insulin..5.OGTT.X)
+```
+
+
+# Task 3.
+basic_info <- select(post_meal_data, id, BMI, Length, Weight, Age)
+rename(basic_info, Height = Length)
+
+```{r}
+post_meal_data |>
+  select(id, BMI, Length, Weight, Age) |>
+  rename(Height = Length)
+```
