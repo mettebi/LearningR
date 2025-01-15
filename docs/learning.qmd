@@ -34,7 +34,6 @@ ggplot(post_meal_data, aes(x = BMI)) +
   geom_histogram()
 ```
 
-
 ```{r}
 #| fig-cap: "Distribution of BMI"
 #| label: fig-mettes-histo
@@ -104,6 +103,20 @@ post_meal_data |>
   ggplot(aes(x = Group, fill = as.character(glykemi))) +
   geom_bar()
 ```
+
+## Plotting two continuous variables
+
+```{r}
+#| fig-cap: "Scatterplot of BMI and the AUC for glucose"
+#| label: fig-bmi-auc-pg
+ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
+  geom_point() +
+  geom_smooth()
+```
+
+
+
+
 ## About me
 
 - Name: Mette Brouw Iversen
