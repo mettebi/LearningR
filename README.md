@@ -1,6 +1,7 @@
 # LearningR: Intro R Course
 
 *A random sentence at the top of the file*
+again a sentence
 
 TODO: Give a brief description of what your project is about
 
