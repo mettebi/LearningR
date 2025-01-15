@@ -29,7 +29,31 @@ post_meal_data
 glimpse(post_meal_data)
 ```
 
+```{r}
+ggplot(post_meal_data, aes(x = BMI)) + 
+  geom_histogram()
+```
 
+
+```{r}
+#| fig-cap: "Distribution of BMI"
+#| label: fig-mettes-histo
+ggplot(post_meal_data, aes(x = BMI)) + 
+  geom_histogram()
+```
+
+@fig-mettes-histo
+
+## Discrete plots
+
+```{r}
+#| fig-cap: "Group"
+#| label: fig-group-discrete
+ggplot(post_meal_data, aes(x = Group)) +
+  geom_bar()
+```
+
+See fig-group-discrete above for a cool plot!
 
 ## About me
 
