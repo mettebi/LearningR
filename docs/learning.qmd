@@ -16,7 +16,7 @@ format: html
 #| message: false
 #| warning: false
 library(tidyverse)
-post_meal_data <- read_csv2(here::here("data/post-meal-insulin.csv")) 
+post_meal_data <- read_csv2(here::here("data/post-meal-insulin.csv"))
 ```
 
 ## Showing the data
@@ -30,7 +30,7 @@ glimpse(post_meal_data)
 ```
 
 ```{r}
-ggplot(post_meal_data, aes(x = BMI)) + 
+ggplot(post_meal_data, aes(x = BMI)) +
   geom_histogram()
 ```
 
@@ -38,7 +38,7 @@ ggplot(post_meal_data, aes(x = BMI)) +
 ```{r}
 #| fig-cap: "Distribution of BMI"
 #| label: fig-mettes-histo
-ggplot(post_meal_data, aes(x = BMI)) + 
+ggplot(post_meal_data, aes(x = BMI)) +
   geom_histogram()
 ```
 
@@ -59,14 +59,12 @@ See @fig-group-discrete above for a cool plot!
 post_meal_data |>
   ggplot(aes(x = Group, fill = as.character(glykemi))) +
   geom_bar(position = position_dodge())
-
 ```
 ## putting two plots side by side
 
 ```{r}
-ggplot(post_meal_data, aes(x = BMI)) + 
+ggplot(post_meal_data, aes(x = BMI)) +
   geom_histogram()
-
 ```
 
 ```{r}
@@ -78,12 +76,12 @@ post_meal_data |>
 ```{r side-by-side-figs}
 #| label: fig-bmi-glycemi
 #| fig-cap: "BMI and glycemia, side by side"
-#| fig-subcap: 
+#| fig-subcap:
 #| - "Distribution of BMI"
 #| - "Distribution of glycemia"
 #| layout-ncol: 2
 
-ggplot(post_meal_data, aes(x = BMI)) + 
+ggplot(post_meal_data, aes(x = BMI)) +
   geom_histogram()
 
 post_meal_data |>
@@ -94,12 +92,12 @@ post_meal_data |>
 ```{r side-by-side-figs}
 #| label: fig-bmi-glycemia
 #| fig-cap: "BMI and glycemia, side by side"
-#| fig-subcap: 
+#| fig-subcap:
 #| - ""
 #| - ""
 #| layout-ncol: 2
 
-ggplot(post_meal_data, aes(x = BMI)) + 
+ggplot(post_meal_data, aes(x = BMI)) +
   geom_histogram()
 
 post_meal_data |>
@@ -116,7 +114,7 @@ Took the *train* to get to Aarhus today. I lived in Aarhus as a student, and **m
 ## Simple code
 
 ```{r}
-3*3
+3 * 3
 ```
 
 ## Testing for Git
