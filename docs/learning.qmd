@@ -116,16 +116,7 @@ ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
 
 ## Pushing changes to remote aka github
 
-
-## Simple code
-
-```{r}
-3 * 3
-```
-
-## Testing for Git
-
-Sky is grey 
+## Pulling changes locally
 
 ## How I accessed Github from R and pushed the project to Github
 
