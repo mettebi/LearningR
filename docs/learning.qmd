@@ -53,8 +53,59 @@ ggplot(post_meal_data, aes(x = Group)) +
   geom_bar()
 ```
 
-See fig-group-discrete above for a cool plot!
+See @fig-group-discrete above for a cool plot!
 
+```{r}
+post_meal_data |>
+  ggplot(aes(x = Group, fill = as.character(glykemi))) +
+  geom_bar(position = position_dodge())
+
+```
+## putting two plots side by side
+
+```{r}
+ggplot(post_meal_data, aes(x = BMI)) + 
+  geom_histogram()
+
+```
+
+```{r}
+post_meal_data |>
+  ggplot(aes(x = Group, fill = as.character(glykemi))) +
+  geom_bar()
+```
+
+```{r side-by-side-figs}
+#| label: fig-bmi-glycemi
+#| fig-cap: "BMI and glycemia, side by side"
+#| fig-subcap: 
+#| - "Distribution of BMI"
+#| - "Distribution of glycemia"
+#| layout-ncol: 2
+
+ggplot(post_meal_data, aes(x = BMI)) + 
+  geom_histogram()
+
+post_meal_data |>
+  ggplot(aes(x = Group, fill = as.character(glykemi))) +
+  geom_bar()
+```
+
+```{r side-by-side-figs}
+#| label: fig-bmi-glycemia
+#| fig-cap: "BMI and glycemia, side by side"
+#| fig-subcap: 
+#| - ""
+#| - ""
+#| layout-ncol: 2
+
+ggplot(post_meal_data, aes(x = BMI)) + 
+  geom_histogram()
+
+post_meal_data |>
+  ggplot(aes(x = Group, fill = as.character(glykemi))) +
+  geom_bar()
+```
 ## About me
 
 - Name: Mette Brouw Iversen
