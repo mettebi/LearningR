@@ -105,7 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="basics-of-r" class="level2">
 <h2 class="anchored" data-anchor-id="basics-of-r">Basics of R</h2>
-<p>create a new chunk to start coding ved at bruge control-shift-p, fx:</p>
+<p>create a new chunk to start coding by using bruge control-shift-p, e.g.:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -574,6 +574,47 @@ Figure&nbsp;5: Scatterplot of BMI and the AUC for glucose
 #   PG30 &lt;dbl&gt;, PG60 &lt;dbl&gt;, PG90 &lt;dbl&gt;, PG120 &lt;dbl&gt;, CP10 &lt;dbl&gt;, CP20 &lt;dbl&gt;,
 #   CP30 &lt;dbl&gt;, CP60 &lt;dbl&gt;, CP90 &lt;dbl&gt;, CP120 &lt;dbl&gt;, Insulin10 &lt;dbl&gt;,
 #   Insulin20 &lt;dbl&gt;, Insulin30 &lt;dbl&gt;, Insulin60 &lt;dbl&gt;, Insulin90 &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+</section>
+<section id="renaming-specific-columns" class="level2">
+<h2 class="anchored" data-anchor-id="renaming-specific-columns">Renaming specific columns</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>small_post_meal_data <span class="sc">|&gt;</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">auc_glucose =</span> auc_pg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 31 × 7
+      id   Age   BMI Group auc_glucose auc_ins glykemi
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1     1    50  27.5 FDR          806.  28728.       0
+ 2     2    51  33.7 FDR          944.  42243.       0
+ 3     3    43  26.3 FDR          694.   7108.       0
+ 4     4    55  25.9 FDR          731.  37593.       0
+ 5     5    53  29.4 FDR         1004.  33863.       0
+ 6     6    51  23.7 FDR          713.  15008.       0
+ 7     7    48  23.9 FDR          965.  23196.       0
+ 8     8    35  22   FDR          741.  15272.       0
+ 9     9    54  26.4 FDR          848.  24426.       0
+10    10    52  24.5 FDR          759.  22475.       0
+# ℹ 21 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>small_post_meal_data <span class="sc">|&gt;</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">auc_glucose =</span> auc_pg, <span class="at">auc_insulin =</span> auc_ins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 31 × 7
+      id   Age   BMI Group auc_glucose auc_insulin glykemi
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;
+ 1     1    50  27.5 FDR          806.      28728.       0
+ 2     2    51  33.7 FDR          944.      42243.       0
+ 3     3    43  26.3 FDR          694.       7108.       0
+ 4     4    55  25.9 FDR          731.      37593.       0
+ 5     5    53  29.4 FDR         1004.      33863.       0
+ 6     6    51  23.7 FDR          713.      15008.       0
+ 7     7    48  23.9 FDR          965.      23196.       0
+ 8     8    35  22   FDR          741.      15272.       0
+ 9     9    54  26.4 FDR          848.      24426.       0
+10    10    52  24.5 FDR          759.      22475.       0
+# ℹ 21 more rows</code></pre>
 </div>
 </div>
 </section>

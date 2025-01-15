@@ -6,7 +6,7 @@ format: html
 
 ## Basics of R
 
-create a new chunk to start coding ved at bruge control-shift-p, fx:
+create a new chunk to start coding by using bruge control-shift-p, e.g.:
 
 ```{r}
 1 + 1
@@ -140,4 +140,14 @@ select(post_meal_data, starts_with("PG"))
 select(post_meal_data, ends_with("DXA"))
 
 select(post_meal_data, contains("0"))
+```
+
+## Renaming specific columns
+
+```{r}
+small_post_meal_data |>
+  rename(auc_glucose = auc_pg)
+
+small_post_meal_data |>
+  rename(auc_glucose = auc_pg, auc_insulin = auc_ins)
 ```
