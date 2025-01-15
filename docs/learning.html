@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Mette Brouw Iversen">
+<meta name="author" content="Mette BI">
 
 <title>Reproducible document</title>
 <style>
@@ -90,7 +90,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Mette Brouw Iversen </p>
+             <p>Mette BI </p>
           </div>
   </div>
     
@@ -105,6 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="basics-of-r" class="level2">
 <h2 class="anchored" data-anchor-id="basics-of-r">Basics of R</h2>
+<p>create a new chunk to start coding ved at bruge control-shift-p, fx:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -116,7 +117,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="setup-code-chunk">setup code chunk</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>post_meal_data <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/post-meal-insulin.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>post_meal_data <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/post-meal-insulin.csv"</span>))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>small_post_meal_data <span class="ot">&lt;-</span> <span class="fu">select</span>(post_meal_data, id, Age, BMI, Group, auc_pg, auc_ins, glykemi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="showing-the-data" class="level2">
@@ -430,12 +433,12 @@ Figure&nbsp;4: BMI and glycemia, side by side
 <pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-bmi-auc-pg" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-bmi-auc_pg" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-bmi-auc-pg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="learning_files/figure-html/fig-bmi-auc-pg-1.png" class="img-fluid figure-img" width="672">
+<div aria-describedby="fig-bmi-auc_pg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="learning_files/figure-html/fig-bmi-auc_pg-1.png" class="img-fluid figure-img" width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bmi-auc-pg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bmi-auc_pg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5: Scatterplot of BMI and the AUC for glucose
 </figcaption>
 </figure>
@@ -443,26 +446,136 @@ Figure&nbsp;5: Scatterplot of BMI and the AUC for glucose
 </div>
 </div>
 </section>
-<section id="about-me" class="level2">
-<h2 class="anchored" data-anchor-id="about-me">About me</h2>
-<ul>
-<li>Name: Mette Brouw Iversen</li>
-<li>Affiliation: SDCC</li>
-</ul>
-<p>Took the <em>train</em> to get to Aarhus today. I lived in Aarhus as a student, and <strong>miss</strong> the city.</p>
+<section id="pushing-changes-to-remote-aka-github" class="level2">
+<h2 class="anchored" data-anchor-id="pushing-changes-to-remote-aka-github">Pushing changes to remote aka github</h2>
 </section>
-<section id="simple-code" class="level2">
-<h2 class="anchored" data-anchor-id="simple-code">Simple code</h2>
+<section id="pulling-changes-locally" class="level2">
+<h2 class="anchored" data-anchor-id="pulling-changes-locally">Pulling changes locally</h2>
+</section>
+<section id="how-i-accessed-github-from-r-and-pushed-the-project-to-github" class="level2">
+<h2 class="anchored" data-anchor-id="how-i-accessed-github-from-r-and-pushed-the-project-to-github">How I accessed Github from R and pushed the project to Github</h2>
+<p>look at 9 in the pre-course material https://guides.rostools.org/connect-github.html</p>
+</section>
+<section id="selecting-columns-from-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="selecting-columns-from-dataset">Selecting columns from dataset</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="sc">*</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(post_meal_data, Age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 9</code></pre>
+<pre><code># A tibble: 31 × 1
+     Age
+   &lt;dbl&gt;
+ 1    50
+ 2    51
+ 3    43
+ 4    55
+ 5    53
+ 6    51
+ 7    48
+ 8    35
+ 9    54
+10    52
+# ℹ 21 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(post_meal_data, Age, BMI, Weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 31 × 3
+     Age   BMI Weight
+   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1    50  27.5   92  
+ 2    51  33.7  106. 
+ 3    43  26.3   89.1
+ 4    55  25.9   84  
+ 5    53  29.4   99.4
+ 6    51  23.7   76.8
+ 7    48  23.9   75.8
+ 8    35  22     67.5
+ 9    54  26.4   87.9
+10    52  24.5   72.2
+# ℹ 21 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(post_meal_data, <span class="sc">-</span>Group)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 31 × 84
+   OFS.ID   Age   BMI Length Weight Bone.mineral.DXA Fat.mass...DXA Fat.mass.DXA
+   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;            &lt;dbl&gt;          &lt;dbl&gt;        &lt;dbl&gt;
+ 1 OFS 3…    50  27.5   1.83   92               3.54           30.2         27.9
+ 2 OFS 3…    51  33.7   1.77  106.              4.05           36.4         38.7
+ 3 OFS 3…    43  26.3   1.84   89.1             3.77           24.4         21.9
+ 4 OFS 3…    55  25.9   1.8    84               3.14           27.5         23.2
+ 5 OFS 3…    53  29.4   1.84   99.4             4.09           31.2         31.2
+ 6 OFS 3…    51  23.7   1.8    76.8             3.21           20           15.3
+ 7 OFS 3…    48  23.9   1.78   75.8             3.33           15.4         11.8
+ 8 OFS 3…    35  22     1.75   67.5             3.26           13.8          9.4
+ 9 OFS 3…    54  26.4   1.83   87.9             4.49           20           17.9
+10 OFS 3…    52  24.5   1.72   72.2             2.87           28.5         20.7
+# ℹ 21 more rows
+# ℹ 76 more variables: Fat.free.mass.DXA &lt;dbl&gt;, Fat.free.soft.tissue.DXA &lt;dbl&gt;,
+#   FP.Glucose.screen &lt;dbl&gt;, P.Glucose..5.OGTT &lt;dbl&gt;, P.Glucose.0.OGTT &lt;dbl&gt;,
+#   P.GLucose.30.OGTT &lt;dbl&gt;, P.Glucose.60.OGTT &lt;dbl&gt;, P.Glucose.90.OGTT &lt;dbl&gt;,
+#   P.Glucose.120.OGTT &lt;dbl&gt;, FS.Insulin.screen &lt;dbl&gt;, Insulin..5.OGTT.X &lt;dbl&gt;,
+#   Insulin.0.OGTT.X &lt;dbl&gt;, Insulin.0.OGTT &lt;dbl&gt;, Insulin.30.OGTT &lt;dbl&gt;,
+#   Insulin.60.OGTT &lt;dbl&gt;, Insulin.90.OGTT &lt;dbl&gt;, Insulin.120.OGTT &lt;dbl&gt;, …</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(post_meal_data, <span class="fu">starts_with</span>(<span class="st">"PG"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 31 × 15
+   PG.15  PG.5   PG1   PG2   PG3   PG5   PG8  PG10  PG15  PG20  PG30  PG45  PG60
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1   5.4   5.4   5.4   5.5   5.3   5.3   5.5   5.5   5.8   6.1   6.9   7.6   6.5
+ 2   5.2   5.4   5.4   5.4   5.4   5.4   5.5   5.6   6     6.5   7.5   7.8   7.5
+ 3   4.9   5     5.1   5.1   5.1   5     5.1   5.1   5     5.2   5.5   5.8   5.6
+ 4   4.8   4.8   4.8   4.8   4.7   4.9   4.9   5.1   5.3   5.1   5.5   6.2   6.7
+ 5   5.9   5.8   5.8   5.9   5.8   5.8   5.7   5.7   6.2   7.2   8     9.3   9.1
+ 6   5     4.9   5.1   5.1   5.1   5     5     5     5.5   5.6   6.1   6.4   5.9
+ 7   5     5.1   5     5     5.1   5.1   5.1   5.2   5.7   6.1   7.9   9.8   9.4
+ 8   4.6   4.6   4.9   4.9   4.9   4.8   4.7   4.8   5.1   5.5   6.5   7.3   6.2
+ 9   5.3   5.1   5.2   5.3   5.4   5.2   5.2   5.4   6     6.4   7.1   7.2   6.8
+10   4.9   4.9   4.8   4.8   4.8   4.9   5.1   5     5.3   6     6.5   6.7   6.8
+# ℹ 21 more rows
+# ℹ 2 more variables: PG90 &lt;dbl&gt;, PG120 &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(post_meal_data, <span class="fu">ends_with</span>(<span class="st">"DXA"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 31 × 5
+   Bone.mineral.DXA Fat.mass...DXA Fat.mass.DXA Fat.free.mass.DXA
+              &lt;dbl&gt;          &lt;dbl&gt;        &lt;dbl&gt;             &lt;dbl&gt;
+ 1             3.54           30.2         27.9              64.3
+ 2             4.05           36.4         38.7              67.8
+ 3             3.77           24.4         21.9              68.0
+ 4             3.14           27.5         23.2              61.1
+ 5             4.09           31.2         31.2              69.0
+ 6             3.21           20           15.3              60.9
+ 7             3.33           15.4         11.8              64.9
+ 8             3.26           13.8          9.4              59.0
+ 9             4.49           20           17.9              71.3
+10             2.87           28.5         20.7              51.8
+# ℹ 21 more rows
+# ℹ 1 more variable: Fat.free.soft.tissue.DXA &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(post_meal_data, <span class="fu">contains</span>(<span class="st">"0"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 31 × 29
+   P.Glucose.0.OGTT P.GLucose.30.OGTT P.Glucose.60.OGTT P.Glucose.90.OGTT
+              &lt;dbl&gt;             &lt;dbl&gt;             &lt;dbl&gt;             &lt;dbl&gt;
+ 1             5.1                9.4               6.9               4.7
+ 2             5.4                8.4               8.4               8.7
+ 3             4.9                6.8               4.3               3.8
+ 4             5.15               8.8               8.4               7.5
+ 5             5.55               9.9              10.6              11  
+ 6             5.6                8.9               9.1               7.1
+ 7             5                  7.6               6.3               5.3
+ 8             5.15               6.4               7.6               6.3
+ 9             4.9                7.4               6.8               5.5
+10             5.3                8.7              10.1               6.8
+# ℹ 21 more rows
+# ℹ 25 more variables: P.Glucose.120.OGTT &lt;dbl&gt;, Insulin.0.OGTT.X &lt;dbl&gt;,
+#   Insulin.0.OGTT &lt;dbl&gt;, Insulin.30.OGTT &lt;dbl&gt;, Insulin.60.OGTT &lt;dbl&gt;,
+#   Insulin.90.OGTT &lt;dbl&gt;, Insulin.120.OGTT &lt;dbl&gt;, PG10 &lt;dbl&gt;, PG20 &lt;dbl&gt;,
+#   PG30 &lt;dbl&gt;, PG60 &lt;dbl&gt;, PG90 &lt;dbl&gt;, PG120 &lt;dbl&gt;, CP10 &lt;dbl&gt;, CP20 &lt;dbl&gt;,
+#   CP30 &lt;dbl&gt;, CP60 &lt;dbl&gt;, CP90 &lt;dbl&gt;, CP120 &lt;dbl&gt;, Insulin10 &lt;dbl&gt;,
+#   Insulin20 &lt;dbl&gt;, Insulin30 &lt;dbl&gt;, Insulin60 &lt;dbl&gt;, Insulin90 &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
-</section>
-<section id="testing-for-git" class="level2">
-<h2 class="anchored" data-anchor-id="testing-for-git">Testing for Git</h2>
-<p>Sky is grey</p>
 </section>
 
 </main>
