@@ -1,6 +1,6 @@
 ---
 title: "Reproducible document"
-author: "Mette Brouw Iversen"
+author: "Mette BI"
 format: html
 ---
 
@@ -108,21 +108,12 @@ post_meal_data |>
 
 ```{r}
 #| fig-cap: "Scatterplot of BMI and the AUC for glucose"
-#| label: fig-bmi-auc-pg
+#| label: fig-bmi-auc_pg
 ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
   geom_point() +
   geom_smooth()
 ```
 
-
-
-
-## About me
-
-- Name: Mette Brouw Iversen
-- Affiliation: SDCC
-
-Took the *train* to get to Aarhus today. I lived in Aarhus as a student, and **miss** the city.
 
 ## Simple code
 
