@@ -114,6 +114,8 @@ ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
   geom_smooth()
 ```
 
+## Pushing changes to remote aka github
+
 
 ## Simple code
 
@@ -124,3 +126,8 @@ ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
 ## Testing for Git
 
 Sky is grey 
+
+## How I accessed Github from R and pushed the project to Github
+
+look at 9 in the pre-course material https://guides.rostools.org/connect-github.html
+
