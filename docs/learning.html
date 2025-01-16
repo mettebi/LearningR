@@ -1059,8 +1059,8 @@ Figure&nbsp;6: Two, multi-dimensional plots of our data.
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Group) <span class="sc">|&gt;</span></span>
 <span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
 <span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Mean age (years)"</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">mean</span>(Age), <span class="dv">1</span>),</span>
-<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Mean BMI (kg/m^2)"</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">mean</span>(BMI), <span class="dv">1</span>)</span>
-<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Mean BMI (kg/m^2^)"</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">mean</span>(BMI), <span class="dv">1</span>)</span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
 <span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="tbl-mean-age-bmi" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -1075,7 +1075,7 @@ Table&nbsp;1: Mean values of Age and BMI for each group
 <tr class="header">
 <th style="text-align: left;">Group</th>
 <th style="text-align: right;">Mean age (years)</th>
-<th style="text-align: right;">Mean BMI (kg/m^2)</th>
+<th style="text-align: right;">Mean BMI (kg/m<sup>2</sup>)</th>
 </tr>
 </thead>
 <tbody>
@@ -1097,6 +1097,93 @@ Table&nbsp;1: Mean values of Age and BMI for each group
 </div>
 </div>
 <p><a href="#tbl-mean-age-bmi" class="quarto-xref">Table&nbsp;1</a></p>
+</section>
+<section id="bigger-table" class="level2">
+<h2 class="anchored" data-anchor-id="bigger-table">Bigger table</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>post_meal_data <span class="sc">|&gt;</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(BMI <span class="sc">&lt;</span> <span class="dv">30</span>) <span class="sc">|&gt;</span></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group =</span> <span class="fu">if_else</span>(Age <span class="sc">&lt;</span> <span class="dv">40</span>, <span class="st">"Young"</span>, <span class="st">"Old"</span>),</span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Group =</span> <span class="fu">if_else</span>(Group <span class="sc">==</span> <span class="st">"CTR"</span>, <span class="st">"Control"</span>, <span class="st">"First-degree relative"</span>)</span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Group, age_group) <span class="sc">|&gt;</span></span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"AUC c-peptide"</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">median</span>(auc_cp), <span class="dv">1</span>),</span>
+<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"AUC p-Glucose"</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">median</span>(auc_pg), <span class="dv">1</span>),</span>
+<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"AUC Insulin"</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">median</span>(auc_ins), <span class="dv">1</span>)</span>
+<span id="cb74-12"><a href="#cb74-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb74-13"><a href="#cb74-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb74-14"><a href="#cb74-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Age group"</span> <span class="ot">=</span> age_group,</span>
+<span id="cb74-15"><a href="#cb74-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Family history"</span> <span class="ot">=</span> Group</span>
+<span id="cb74-16"><a href="#cb74-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb74-17"><a href="#cb74-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb74-18"><a href="#cb74-18" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'Group'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div id="tbl-summary-table" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-summary-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Median values of AUC measurements by age group and family history group
+</figcaption>
+<div aria-describedby="tbl-summary-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 13%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Family history</th>
+<th style="text-align: left;">Age group</th>
+<th style="text-align: right;">AUC c-peptide</th>
+<th style="text-align: right;">AUC p-Glucose</th>
+<th style="text-align: right;">AUC Insulin</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Control</td>
+<td style="text-align: left;">Old</td>
+<td style="text-align: right;">167.7</td>
+<td style="text-align: right;">780.3</td>
+<td style="text-align: right;">21115.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Control</td>
+<td style="text-align: left;">Young</td>
+<td style="text-align: right;">173.4</td>
+<td style="text-align: right;">762.8</td>
+<td style="text-align: right;">21189.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">First-degree relative</td>
+<td style="text-align: left;">Old</td>
+<td style="text-align: right;">203.2</td>
+<td style="text-align: right;">814.9</td>
+<td style="text-align: right;">23810.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">First-degree relative</td>
+<td style="text-align: left;">Young</td>
+<td style="text-align: right;">204.8</td>
+<td style="text-align: right;">741.2</td>
+<td style="text-align: right;">30320.1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>See <a href="#tbl-summary-table" class="quarto-xref">Table&nbsp;2</a>, very nice table! :D</p>
 </section>
 </section>
 

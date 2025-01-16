@@ -324,9 +324,36 @@ tidied_post_meal_data |>
   group_by(Group) |>
   summarise(
     "Mean age (years)" = round(mean(Age), 1),
-    "Mean BMI (kg/m^2)" = round(mean(BMI), 1)
-    ) |>
+    "Mean BMI (kg/m^2^)" = round(mean(BMI), 1)
+  ) |>
   ungroup() |>
   knitr::kable()
 ```
 @tbl-mean-age-bmi
+
+## Bigger table
+
+```{r}
+#| label: tbl-summary-table
+#| tbl-cap: "Median values of AUC measurements by age group and family history group"
+post_meal_data |>
+  filter(BMI < 30) |>
+  mutate(
+    age_group = if_else(Age < 40, "Young", "Old"),
+    Group = if_else(Group == "CTR", "Control", "First-degree relative")
+  ) |>
+  group_by(Group, age_group) |>
+  summarise(
+    "AUC c-peptide" = round(median(auc_cp), 1),
+    "AUC p-Glucose" = round(median(auc_pg), 1),
+    "AUC Insulin" = round(median(auc_ins), 1)
+  ) |>
+  rename(
+    "Age group" = age_group,
+    "Family history" = Group
+  ) |>
+  ungroup() |>
+  knitr::kable()
+```
+  
+See @tbl-summary-table, very nice table! :D
