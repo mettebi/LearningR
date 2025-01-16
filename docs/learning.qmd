@@ -205,3 +205,28 @@ tidier_post_meal_data <- small_post_meal_data |>
   filter(glykemi == 0) |>
   select(-glykemi)
 ```
+
+## Modify a column 
+
+```{r}
+tidier_post_meal_data |>
+  mutate(
+    insulin_glucose_ratio = auc_insulin / auc_glucose,
+    Group = if_else(Group == "CTR", "Control", "First-degree relative")
+  )
+```
+
+## Practice with filter and mutate
+
+```{r}
+# Task 1. Answer = 16
+post_meal_data |>
+  filter(BMI >= 20 & BMI <= 40 & Group == "FDR")
+```
+
+```{r}
+# Task 2. Answer = 10 rows
+post_meal_data |>
+  mutate(percent_body_fat = (Fat.mass.DXA / Weight) * 100) |>
+  filter(percent_body_fat > 30)
+```
